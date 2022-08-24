@@ -25,9 +25,9 @@ RUN cd xapp-frame && \
 
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 COPY control/ control/
-COPY cmd/ cmd/
 COPY e2ap/ e2ap/
 COPY e2sm/ e2sm/
+
 
 # "COMPILING E2AP Wrapper"
 # -DASN_EMIT_DEBUG=1
@@ -47,13 +47,16 @@ RUN cd e2sm && \
     mkdir /usr/local/include/e2sm && \
     cp wrapper.h headers/*.h /usr/local/include/e2sm && \
     ldconfig
+    
+COPY ./go.mod ./go.mod
+COPY ./kpimon.go ./kpimon.go
 
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 
 RUN mkdir pkg
 
 RUN go env -w GO111MODULE=off
-RUN go build ./cmd/kpimon.go && pwd && ls -lat
+RUN go build ./kpimon.go && pwd && ls -lat
 
 FROM ubuntu:20.04
 COPY --from=kpimonbuild /usr/local/lib /usr/local/lib
@@ -64,6 +67,8 @@ WORKDIR /go/src/gerrit.o-ran-sc.org/r/ric-plt/xapp-frame/config/
 COPY --from=kpimonbuild /go/src/gerrit.o-ran-sc.org/r/ric-plt/xapp-frame/config/config-file.yaml .
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 COPY --from=kpimonbuild /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/kpimon .
+
+COPY go.sum go.sum
 
 ENV  RMR_RTG_SVC="9999" \
      VERBOSE=0 \
