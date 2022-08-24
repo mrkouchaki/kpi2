@@ -51,7 +51,14 @@ RUN cd e2sm && \
 COPY ./go.mod ./go.mod
 COPY ./kpimon.go ./kpimon.go
 
+# ENV DEFAULTPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# ENV PATH=$DEFAULTPATH:/usr/local/go/bin:/opt/go/bin:/root/go/bin
+
+
+# RUN go build ./kpimon.go
+
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
+COPY go.sum go.sum
 
 RUN mkdir pkg
 
@@ -68,7 +75,7 @@ COPY --from=kpimonbuild /go/src/gerrit.o-ran-sc.org/r/ric-plt/xapp-frame/config/
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 COPY --from=kpimonbuild /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/kpimon .
 
-COPY go.sum go.sum
+
 
 ENV  RMR_RTG_SVC="9999" \
      VERBOSE=0 \
