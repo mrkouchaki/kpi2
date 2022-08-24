@@ -51,19 +51,19 @@ RUN cd e2sm && \
 COPY ./go.mod ./go.mod
 COPY ./kpimon.go ./kpimon.go
 
-# ENV DEFAULTPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-# ENV PATH=$DEFAULTPATH:/usr/local/go/bin:/opt/go/bin:/root/go/bin
+ENV DEFAULTPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=$DEFAULTPATH:/usr/local/go/bin:/opt/go/bin:/root/go/bin
+COPY go.sum go.sum
 
-
-# RUN go build ./kpimon.go
+RUN go build ./kpimon.go
 
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
-COPY go.sum go.sum
+# COPY go.sum go.sum
 
 RUN mkdir pkg
 
-RUN go env -w GO111MODULE=off
-RUN go build ./kpimon.go && pwd && ls -lat
+# RUN go env -w GO111MODULE=off
+# RUN go build ./kpimon.go && pwd && ls -lat
 
 FROM ubuntu:20.04
 COPY --from=kpimonbuild /usr/local/lib /usr/local/lib
