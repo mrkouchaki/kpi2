@@ -51,6 +51,8 @@ RUN cd e2sm && \
 COPY ./go.mod ./go.mod
 COPY ./kpimon.go ./kpimon.go
 
+WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
+
 RUN wget -nv --no-check-certificate https://dl.google.com/go/go1.18.linux-amd64.tar.gz \
      && tar -xf go1.18.linux-amd64.tar.gz \
      && rm -f go*.gz
@@ -61,7 +63,7 @@ COPY go.sum go.sum
 
 RUN go build ./kpimon.go
 
-WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
+
 # COPY go.sum go.sum
 
 RUN mkdir pkg
