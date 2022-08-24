@@ -5,8 +5,8 @@
     {
       "name": "xappkpimon",
       "image": {
-        "registry": "example.com",
-        "name": "5gvietnam/kpimon",
+        "registry": "xApp-registry.local:5008",
+        "name": "xappkpimon",
         "tag": "1.0.0"
       }
     }
