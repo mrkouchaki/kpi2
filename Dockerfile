@@ -25,6 +25,7 @@ RUN wget -nv --no-check-certificate https://dl.google.com/go/go1.18.linux-amd64.
 # ENV PATH=$DEFAULTPATH:/usr/local/go/bin:/opt/go/bin:/root/go/bin
 RUN sudo apt update && sudo apt install --assume-yes golang
 
+RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git"
 #RUN go get -d github.com/influxdata/influxdb-client-go/v2
 
 ARG XAPPFRAMEVERSION=v0.4.11
