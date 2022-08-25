@@ -25,6 +25,8 @@ RUN wget -nv --no-check-certificate https://dl.google.com/go/go1.18.linux-amd64.
 # ENV PATH=$DEFAULTPATH:/usr/local/go/bin:/opt/go/bin:/root/go/bin
 RUN sudo apt update && sudo apt install --assume-yes golang
 
+RUN go get -d github.com/influxdata/influxdb-client-go
+
 ARG XAPPFRAMEVERSION=v0.4.11
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/ric-plt
 # RUN git clone "https://gerrit.o-ran-sc.org/r/ric-plt/sdlgo"
