@@ -1,5 +1,8 @@
 FROM nexus3.o-ran-sc.org:10004/o-ran-sc/bldr-ubuntu20-c-go:1.0.0 as kpimonbuild
 
+
+
+
 ENV PATH $PATH:/usr/local/bin
 ENV GOPATH /go
 ENV GOBIN /go/bin
@@ -14,6 +17,14 @@ RUN wget --content-disposition ${RMRLIBURL} && dpkg -i rmr_${RMRVERSION}_amd64.d
 RUN wget --content-disposition ${RMRDEVURL} && dpkg -i rmr-dev_${RMRVERSION}_amd64.deb
 RUN rm -f rmr_${RMRVERSION}_amd64.deb rmr-dev_${RMRVERSION}_amd64.deb
 
+
+RUN wget -nv --no-check-certificate https://dl.google.com/go/go1.18.linux-amd64.tar.gz \
+     && tar -xf go1.18.linux-amd64.tar.gz \
+     && rm -f go*.gz
+# ENV DEFAULTPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# ENV PATH=$DEFAULTPATH:/usr/local/go/bin:/opt/go/bin:/root/go/bin
+RUN sudo apt update && sudo apt install --assume-yes golang
+
 ARG XAPPFRAMEVERSION=v0.4.11
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/ric-plt
 # RUN git clone "https://gerrit.o-ran-sc.org/r/ric-plt/sdlgo"
@@ -27,7 +38,9 @@ WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 COPY control/ control/
 COPY e2ap/ e2ap/
 COPY e2sm/ e2sm/
-
+COPY ./go.mod ./go.mod
+COPY ./kpimon.go ./kpimon.go
+COPY ./go.sum ./go.sum
 
 # "COMPILING E2AP Wrapper"
 # -DASN_EMIT_DEBUG=1
@@ -48,28 +61,18 @@ RUN cd e2sm && \
     cp wrapper.h headers/*.h /usr/local/include/e2sm && \
     ldconfig
     
-COPY ./go.mod ./go.mod
-COPY ./kpimon.go ./kpimon.go
+
 
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
-
-RUN wget -nv --no-check-certificate https://dl.google.com/go/go1.18.linux-amd64.tar.gz \
-     && tar -xf go1.18.linux-amd64.tar.gz \
-     && rm -f go*.gz
-# ENV DEFAULTPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-# ENV PATH=$DEFAULTPATH:/usr/local/go/bin:/opt/go/bin:/root/go/bin
-RUN sudo apt update && sudo apt install --assume-yes golang
-COPY go.sum go.sum
-
-RUN go build ./kpimon.go
-
-
-# COPY go.sum go.sum
-
 RUN mkdir pkg
 
-# RUN go env -w GO111MODULE=off
-# RUN go build ./kpimon.go && pwd && ls -lat
+
+
+#RUN go build ./kpimon.go
+
+
+RUN go env -w GO111MODULE=off
+RUN go build ./kpimon.go && pwd && ls -lat
 
 FROM ubuntu:20.04
 COPY --from=kpimonbuild /usr/local/lib /usr/local/lib
