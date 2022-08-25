@@ -72,7 +72,7 @@ RUN mkdir pkg
 
 
 #RUN go build ./kpimon.go
-RUN git clone -b "https://github.com/influxdata/influxdb-client-go"
+RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git" /go/src/
 RUN go get github.com/influxdata/influxdb-client-go
 
 RUN go env -w GO111MODULE=off
