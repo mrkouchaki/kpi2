@@ -44,6 +44,7 @@ COPY e2sm/ e2sm/
 COPY ./go.mod ./go.mod
 COPY ./kpimon.go ./kpimon.go
 COPY ./go.sum ./go.sum
+COPY influxdb-client-go/ influxdb-client-go/
 
 # "COMPILING E2AP Wrapper"
 # -DASN_EMIT_DEBUG=1
@@ -69,11 +70,11 @@ RUN cd e2sm && \
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 RUN mkdir pkg
 
-
+RUN export -p | grep GO
 
 #RUN go build ./kpimon.go
-RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git" /root/go/src/
-RUN go get github.com/influxdata/influxdb-client-go
+#RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git" /root/go/src/
+RUN go get influxdb-client-go
 
 RUN go env -w GO111MODULE=off
 RUN go build ./kpimon.go && pwd && ls -lat
