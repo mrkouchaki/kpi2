@@ -79,7 +79,8 @@ RUN unset GOPATH
 #RUN go get ./influxdb-client-go/client.go
 
 RUN go env -w GO111MODULE=off
-RUN go build ./kpimon.go && pwd && ls -lat
+RUN go build ./kpimon.go
+#&& pwd && ls -lat
 
 FROM ubuntu:20.04
 COPY --from=kpimonbuild /usr/local/lib /usr/local/lib
