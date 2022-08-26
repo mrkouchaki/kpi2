@@ -11,10 +11,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	http2 "github.com/influxdata/influxdb-client-go/v2/api/http"
-	"github.com/influxdata/influxdb-client-go/v2/api/write"
-	"github.com/influxdata/influxdb-client-go/v2/internal/log"
-	iwrite "github.com/influxdata/influxdb-client-go/v2/internal/write"
+	http2 "gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/api/http"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/api/write"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/internal/log"
+	iwrite "gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/internal/write"
 )
 
 // WriteFailedCallback is synchronously notified in case non-blocking write fails.
