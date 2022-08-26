@@ -8,7 +8,7 @@ ENV GOPATH /go
 ENV GOBIN /go/bin
 ENV RMR_SEED_RT /opt/routes.txt
 
-RUN go get "github.com/deepmap/oapi-codegen/pkg/runtime"
+
 
 COPY routes.txt /opt/routes.txt
 
@@ -26,6 +26,8 @@ RUN wget -nv --no-check-certificate https://dl.google.com/go/go1.18.linux-amd64.
 # ENV DEFAULTPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # ENV PATH=$DEFAULTPATH:/usr/local/go/bin:/opt/go/bin:/root/go/bin
 RUN sudo apt update && sudo apt install --assume-yes golang
+
+RUN go get "github.com/deepmap/oapi-codegen/pkg/runtime"
 
 #RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git"
 #RUN go get -d github.com/influxdata/influxdb-client-go/v2
