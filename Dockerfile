@@ -8,6 +8,8 @@ ENV GOPATH /go
 ENV GOBIN /go/bin
 ENV RMR_SEED_RT /opt/routes.txt
 
+RUN go get "https://github.com/deepmap/oapi-codegen/tree/master/pkg/runtime"
+
 COPY routes.txt /opt/routes.txt
 
 ARG RMRVERSION=4.0.2
