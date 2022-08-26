@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/control"
+	"control"
 )
 func main() {
 	c := control.NewControl()
