@@ -25,7 +25,7 @@ RUN wget -nv --no-check-certificate https://dl.google.com/go/go1.18.linux-amd64.
      && rm -f go*.gz
 # ENV DEFAULTPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # ENV PATH=$DEFAULTPATH:/usr/local/go/bin:/opt/go/bin:/root/go/bin
-RUN sudo apt update && sudo apt install --assume-yes golang
+#RUN sudo apt update && sudo apt install --assume-yes golang
 
 RUN go get "github.com/deepmap/oapi-codegen/pkg/runtime"
 
