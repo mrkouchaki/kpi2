@@ -18,11 +18,11 @@ import (
 	"sync"
 	"time"
 
-	http2 "github.com/influxdata/influxdb-client-go/v2/api/http"
-	"github.com/influxdata/influxdb-client-go/v2/api/write"
-	"github.com/influxdata/influxdb-client-go/v2/internal/gzip"
-	"github.com/influxdata/influxdb-client-go/v2/internal/log"
-	ilog "github.com/influxdata/influxdb-client-go/v2/log"
+	http2 "gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/api/http"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/api/write"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/internal/gzip"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/internal/log"
+	ilog "gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/log"
 	lp "github.com/influxdata/line-protocol"
 )
 
