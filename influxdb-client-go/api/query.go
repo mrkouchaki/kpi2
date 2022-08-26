@@ -24,11 +24,11 @@ import (
 	"sync"
 	"time"
 
-	http2 "github.com/influxdata/influxdb-client-go/api/http"
-	"github.com/influxdata/influxdb-client-go/api/query"
-	"github.com/influxdata/influxdb-client-go/domain"
-	"github.com/influxdata/influxdb-client-go/internal/log"
-	ilog "github.com/influxdata/influxdb-client-go/log"
+	http2 "gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/api/http"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/api/query"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/domain"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/internal/log"
+	ilog "gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/log"
 )
 
 const (
