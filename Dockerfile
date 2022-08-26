@@ -4,7 +4,7 @@ FROM nexus3.o-ran-sc.org:10004/o-ran-sc/bldr-ubuntu20-c-go:1.0.0 as kpimonbuild
 
 
 ENV PATH $PATH:/usr/local/bin
-#ENV GOPATH /go
+ENV GOPATH /go
 ENV GOBIN /go/bin
 ENV RMR_SEED_RT /opt/routes.txt
 
@@ -70,9 +70,9 @@ RUN cd e2sm && \
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 RUN mkdir pkg
 
-RUN export -p | grep GO
-RUN unset GOROOT
-RUN unset GOPATH
+# RUN export -p | grep GO
+# RUN unset GOROOT
+# RUN unset GOPATH
 
 #RUN go build ./kpimon.go
 #RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git" /root/go/src/
