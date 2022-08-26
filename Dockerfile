@@ -71,6 +71,8 @@ WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 RUN mkdir pkg
 
 RUN export -p | grep GO
+RUN unset GOROOT
+#RUN unset GOPATH
 
 #RUN go build ./kpimon.go
 #RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git" /root/go/src/
