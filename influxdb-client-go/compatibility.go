@@ -5,9 +5,9 @@
 package influxdb2
 
 import (
-	"github.com/influxdata/influxdb-client-go/api"
-	"github.com/influxdata/influxdb-client-go/api/write"
-	"github.com/influxdata/influxdb-client-go/domain"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/api"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/api/write"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/domain"
 	"time"
 )
 
