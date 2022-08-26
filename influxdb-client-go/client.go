@@ -13,11 +13,11 @@ import (
 	"sync"
 	"time"
 
-	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/v2/api"
-	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/v2/api/http"
-	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/v2/domain"
-	ilog "gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/v2/internal/log"
-	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/v2/log"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/api"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/api/http"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/domain"
+	ilog "gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/internal/log"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/log"
 )
 
 // Client provides API to communicate with InfluxDBServer.
