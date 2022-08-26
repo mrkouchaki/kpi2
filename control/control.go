@@ -9,7 +9,7 @@ import (
 
 	"gerrit.o-ran-sc.org/r/ric-plt/xapp-frame/pkg/clientmodel"
 	"gerrit.o-ran-sc.org/r/ric-plt/xapp-frame/pkg/xapp"
-	"github.com/influxdata/influxdb-client-go"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go"
 )
 
 type Control struct {
