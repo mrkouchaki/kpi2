@@ -5,7 +5,7 @@
 package domain
 
 import (
-	"github.com/influxdata/influxdb-client-go/v2/api/http"
+	"gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/api/http"
 )
 
 // ErrorToHTTPError creates http.Error from domain.Error
