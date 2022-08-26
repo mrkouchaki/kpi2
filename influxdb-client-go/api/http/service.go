@@ -22,7 +22,7 @@ import (
 	"net/url"
 	"strconv"
 
-	http2 "github.com/influxdata/influxdb-client-go/v2/internal/http"
+	http2 "gerrit.o-ran-sc.org/r/scp/ric-app/kpimon/influxdb-client-go/internal/http"
 	"github.com/influxdata/influxdb-client-go/v2/internal/log"
 )
 
