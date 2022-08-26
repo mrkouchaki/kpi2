@@ -74,7 +74,7 @@ RUN export -p | grep GO
 
 #RUN go build ./kpimon.go
 #RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git" /root/go/src/
-RUN go get ./influxdb-client-go
+RUN go get ./influxdb-client-go/client.go
 
 RUN go env -w GO111MODULE=off
 RUN go build ./kpimon.go && pwd && ls -lat
