@@ -16,7 +16,7 @@ import (
 
 	"gopkg.in/yaml.v2"
 
-	"github.com/deepmap/oapi-codegen/pkg/runtime"
+	"https://github.com/deepmap/oapi-codegen/tree/master/pkg/runtime"
 	ihttp "github.com/influxdata/influxdb-client-go/v2/api/http"
 )
 
