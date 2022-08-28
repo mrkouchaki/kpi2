@@ -52,7 +52,8 @@ WORKDIR /go/src/github.com/deepmap/oapi-codegen/pkg
 RUN git clone https://github.com/deepmap/oapi-codegen.git
 #RUN mkdir pkg
 RUN ls
-RUN cd oapi-codegen/pkg && ls && cp ./runtime ../
+RUN cd oapi-codegen/pkg && ls && cp -r ./runtime ../ && cd .. && ls
+RUN ls
 
 
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
