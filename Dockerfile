@@ -46,7 +46,7 @@ WORKDIR /go/src
 
 RUN go get "github.com/influxdata/influxdb-client-go"
 RUN go get "github.com/deepmap/oapi-codegen/pkg/runtime"
-RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git"
+RUN git clone https://github.com/influxdata/influxdb-client-go.git
 
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 COPY control/ control/
