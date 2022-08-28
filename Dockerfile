@@ -55,16 +55,21 @@ WORKDIR /go/src/github.com/deepmap/oapi-codegen/pkg
 RUN git clone https://github.com/deepmap/oapi-codegen.git
 RUN cd oapi-codegen/pkg && \
     cp -r runtime /go/src/github.com/deepmap/oapi-codegen/pkg/runtime
-
-# RUN cd oapi-codegen/pkg && ls && cp -r ./runtime ../ && cd ..
-# RUN ls
+RUN cd oapi-codegen/pkg && \
+    cp -r types /go/src/github.com/deepmap/oapi-codegen/pkg/types
 
 WORKDIR /go/src/github.com/apapsch/go-jsonmerge/v2
 RUN git clone https://github.com/apapsch/go-jsonmerge.git
-# RUN cd oapi-codegen/pkg && \
-#     cp -r runtime /go/src/github.com/deepmap/oapi-codegen/pkg/runtime
+    
 
+WORKDIR /go/src/github.com/influxdata/line-protocol
+RUN git clone https://github.com/influxdata/line-protocol.git
 
+WORKDIR /go/src/github.com/pkg/errors
+RUN git clone https://github.com/pkg/errors.git
+
+WORKDIR /go/src/golang.org/x/net/publicsuffix
+RUN go get https://cs.opensource.google/go/x/net/+/master:publicsuffix/
 
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 COPY control/ control/
