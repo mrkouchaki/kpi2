@@ -51,10 +51,11 @@ RUN git clone https://github.com/influxdata/influxdb-client-go.git
 WORKDIR /go/src/github.com/deepmap/oapi-codegen/pkg
 RUN go get "github.com/deepmap/oapi-codegen/pkg/runtime"
 
-WORKDIR /go/src/github.com/deepmap/oapi-codegen
+WORKDIR /go/src/github.com/deepmap/oapi-codegen/pkg
 RUN git clone https://github.com/deepmap/oapi-codegen.git
-#RUN mkdir pkg
-# RUN ls
+RUN cd oapi-codegen/pkg && \
+    cp -r runtime /go/src/github.com/deepmap/oapi-codegen/pkg/runtime
+
 # RUN cd oapi-codegen/pkg && ls && cp -r ./runtime ../ && cd ..
 # RUN ls
 
