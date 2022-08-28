@@ -59,6 +59,12 @@ RUN cd oapi-codegen/pkg && \
 # RUN cd oapi-codegen/pkg && ls && cp -r ./runtime ../ && cd ..
 # RUN ls
 
+WORKDIR /go/src/github.com/apapsch/go-jsonmerge/v2
+RUN git clone https://github.com/apapsch/go-jsonmerge.git
+# RUN cd oapi-codegen/pkg && \
+#     cp -r runtime /go/src/github.com/deepmap/oapi-codegen/pkg/runtime
+
+
 
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 COPY control/ control/
