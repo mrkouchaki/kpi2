@@ -27,10 +27,10 @@ RUN wget -nv --no-check-certificate https://dl.google.com/go/go1.19.linux-amd64.
 # ENV PATH=$DEFAULTPATH:/usr/local/go/bin:/opt/go/bin:/root/go/bin
 #RUN sudo apt update && sudo apt install --assume-yes golang
 
-RUN go get "github.com/influxdata/influxdb-client-go"
-RUN go get "github.com/deepmap/oapi-codegen/pkg/runtime"
+#RUN go get "github.com/influxdata/influxdb-client-go"
+#RUN go get "github.com/deepmap/oapi-codegen/pkg/runtime"
 
-RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git" /go/src/
+#RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git" /go/src/
 
 
 ARG XAPPFRAMEVERSION=v0.4.11
@@ -41,6 +41,12 @@ RUN cd xapp-frame && \
    GO111MODULE=on go mod vendor -v && \
     cp -r vendor/* /go/src/ && \
     rm -rf vendor
+
+WORKDIR /go/src
+
+RUN go get "github.com/influxdata/influxdb-client-go"
+RUN go get "github.com/deepmap/oapi-codegen/pkg/runtime"
+RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git"
 
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 COPY control/ control/
