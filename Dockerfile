@@ -30,7 +30,7 @@ RUN wget -nv --no-check-certificate https://dl.google.com/go/go1.19.linux-amd64.
 RUN go get "github.com/influxdata/influxdb-client-go"
 RUN go get "github.com/deepmap/oapi-codegen/pkg/runtime"
 
-#RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git"
+RUN git clone -b "https://github.com/influxdata/influxdb-client-go.git" /go/src/
 
 
 ARG XAPPFRAMEVERSION=v0.4.11
