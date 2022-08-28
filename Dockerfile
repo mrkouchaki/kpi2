@@ -20,8 +20,8 @@ RUN wget --content-disposition ${RMRDEVURL} && dpkg -i rmr-dev_${RMRVERSION}_amd
 RUN rm -f rmr_${RMRVERSION}_amd64.deb rmr-dev_${RMRVERSION}_amd64.deb
 
 
-RUN wget -nv --no-check-certificate https://dl.google.com/go/go1.18.linux-amd64.tar.gz \
-     && tar -xf go1.18.linux-amd64.tar.gz \
+RUN wget -nv --no-check-certificate https://dl.google.com/go/go1.19.linux-amd64.tar.gz \
+     && tar -xf go1.19.linux-amd64.tar.gz \
      && rm -f go*.gz
 # ENV DEFAULTPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # ENV PATH=$DEFAULTPATH:/usr/local/go/bin:/opt/go/bin:/root/go/bin
