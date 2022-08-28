@@ -42,7 +42,7 @@ RUN cd xapp-frame && \
     cp -r vendor/* /go/src/ && \
     rm -rf vendor
 
-WORKDIR /go/src
+WORKDIR /go/src/github.com/influxdata
 
 RUN go get "github.com/influxdata/influxdb-client-go"
 RUN go get "github.com/deepmap/oapi-codegen/pkg/runtime"
