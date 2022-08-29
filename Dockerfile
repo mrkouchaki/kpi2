@@ -68,7 +68,7 @@ RUN git clone https://github.com/RaveNoX/go-jsonmerge && \
     
 
 WORKDIR /go/src/github.com/influxdata/line-protocol
-RUN go get -u github.com/influxdata/line-protocol/lineprotocol
+RUN go get -u github.com/influxdata/line-protocol
 RUN git clone https://github.com/influxdata/line-protocol.git
 
 WORKDIR /go/src/github.com/pkg/errors
