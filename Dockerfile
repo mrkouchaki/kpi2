@@ -62,7 +62,7 @@ WORKDIR /go/src/github.com/apapsch/go-jsonmerge/v2
 RUN go get "github.com/RaveNoX/go-jsonmerge"
 #RUN go get "github.com/apapsch/go-jsonmerge"
 #RUN git clone https://github.com/apapsch/go-jsonmerge.git && \
-    ls
+    #ls
 RUN git clone https://github.com/RaveNoX/go-jsonmerge && \
     ls
     
