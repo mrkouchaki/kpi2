@@ -59,7 +59,7 @@ RUN cd oapi-codegen/pkg && \
     cp -r types /go/src/github.com/deepmap/oapi-codegen/pkg/types
 
 WORKDIR /go/src/github.com/apapsch/go-jsonmerge/v2
-RUN go get github.com/RaveNoX/go-jsonmerge/cmd/jsonmerge
+RUN go get -u github.com/RaveNoX/go-jsonmerge/cmd/jsonmerge
 #RUN go get "github.com/apapsch/go-jsonmerge"
 #RUN git clone https://github.com/apapsch/go-jsonmerge.git && \
     #ls
@@ -68,7 +68,7 @@ RUN git clone https://github.com/RaveNoX/go-jsonmerge && \
     
 
 WORKDIR /go/src/github.com/influxdata/line-protocol
-RUN go get "github.com/influxdata/line-protocol"
+RUN go get -u github.com/influxdata/line-protocol/lineprotocol
 RUN git clone https://github.com/influxdata/line-protocol.git
 
 WORKDIR /go/src/github.com/pkg/errors
@@ -77,12 +77,12 @@ RUN git clone https://github.com/pkg/errors.git && \
     ls
 
 WORKDIR /go/src/github.com/google/uuid
-RUN go get "github.com/google/uuid"
+RUN go get -u github.com/google/uuid
 RUN git clone https://github.com/google/uuid.git && \
     ls
 
 WORKDIR /go/src/golang.org/x/net/publicsuffix
-RUN go get "github.com/globalsign/publicsuffix"
+RUN go get -u github.com/globalsign/publicsuffix
 RUN git clone https://github.com/globalsign/publicsuffix.git && \
     ls
 #RUN go get "cs.opensource.google/go/x/net/+/master:publicsuffix"
