@@ -84,7 +84,7 @@ WORKDIR /go/src/golang.org/x/net/publicsuffix
 RUN go get "github.com/globalsign/publicsuffix"
 RUN git clone https://github.com/globalsign/publicsuffix.git && \
     ls
-RUN go get "cs.opensource.google/go/x/net/+/master:publicsuffix"
+#RUN go get "cs.opensource.google/go/x/net/+/master:publicsuffix"
 
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 COPY control/ control/
