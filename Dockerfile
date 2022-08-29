@@ -59,22 +59,27 @@ RUN cd oapi-codegen/pkg && \
     cp -r types /go/src/github.com/deepmap/oapi-codegen/pkg/types
 
 WORKDIR /go/src/github.com/apapsch/go-jsonmerge/v2
+RUN go get git clone https://github.com/apapsch/go-jsonmerge
 RUN git clone https://github.com/apapsch/go-jsonmerge.git && \
     ls
     
 
 WORKDIR /go/src/github.com/influxdata/line-protocol
+RUN go get https://github.com/influxdata/line-protocol
 RUN git clone https://github.com/influxdata/line-protocol.git
 
 WORKDIR /go/src/github.com/pkg/errors
+RUN go get https://github.com/pkg/errors
 RUN git clone https://github.com/pkg/errors.git && \
     ls
 
 WORKDIR /go/src/github.com/google/uuid
+RUN go get https://github.com/google/uuid
 RUN git clone https://github.com/google/uuid.git && \
     ls
 
 WORKDIR /go/src/golang.org/x/net/publicsuffix
+RUN go get https://github.com/globalsign/publicsuffix
 RUN git clone https://github.com/globalsign/publicsuffix.git && \
     ls
 # RUN go get https://cs.opensource.google/go/x/net/+/master:publicsuffix/
