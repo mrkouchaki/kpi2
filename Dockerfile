@@ -59,7 +59,7 @@ RUN cd oapi-codegen/pkg && \
     cp -r types /go/src/github.com/deepmap/oapi-codegen/pkg/types
 
 WORKDIR /go/src/github.com/apapsch/go-jsonmerge/v2
-RUN go get git clone https://github.com/apapsch/go-jsonmerge
+RUN go get https://github.com/apapsch/go-jsonmerge
 RUN git clone https://github.com/apapsch/go-jsonmerge.git && \
     ls
     
