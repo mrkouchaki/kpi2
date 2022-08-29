@@ -68,8 +68,8 @@ RUN git clone https://github.com/influxdata/line-protocol.git
 WORKDIR /go/src/github.com/pkg/errors
 RUN git clone https://github.com/pkg/errors.git
 
-WORKDIR /go/src/golang.org/x/net/publicsuffix
-RUN go get https://cs.opensource.google/go/x/net/+/master:publicsuffix/
+# WORKDIR /go/src/golang.org/x/net/publicsuffix
+# RUN go get https://cs.opensource.google/go/x/net/+/master:publicsuffix/
 
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
 COPY control/ control/
