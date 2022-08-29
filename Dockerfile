@@ -71,7 +71,8 @@ RUN git clone https://github.com/pkg/errors.git
 WORKDIR /go/src/github.com/google/uuid
 RUN git clone https://github.com/google/uuid.git
 
-# WORKDIR /go/src/golang.org/x/net/publicsuffix
+WORKDIR /go/src/golang.org/x/net/publicsuffix
+RUN git clone https://github.com/globalsign/publicsuffix.git
 # RUN go get https://cs.opensource.google/go/x/net/+/master:publicsuffix/
 
 WORKDIR /go/src/gerrit.o-ran-sc.org/r/scp/ric-app/kpimon
