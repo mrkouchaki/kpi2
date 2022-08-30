@@ -4,8 +4,29 @@ FROM nexus3.o-ran-sc.org:10004/o-ran-sc/bldr-ubuntu20-c-go:1.0.0 as kpimonbuild
 
 WORKDIR /opt
 # Install RMR client
-COPY bin/rmr* ./
-RUN dpkg -i rmr_4.8.0_amd64.deb; dpkg -i rmr-dev_4.8.0_amd64.deb; rm rmr*
+
+
+ARG RMRVERSION=4.0.2
+ARG RMRLIBURL=https://packagecloud.io/o-ran-sc/release/packages/debian/stretch/rmr_${RMRVERSION}_amd64.deb/download.deb
+ARG RMRDEVURL=https://packagecloud.io/o-ran-sc/release/packages/debian/stretch/rmr-dev_${RMRVERSION}_amd64.deb/download.deb
+RUN wget --content-disposition ${RMRLIBURL} && dpkg -i rmr_${RMRVERSION}_amd64.deb
+RUN wget --content-disposition ${RMRDEVURL} && dpkg -i rmr-dev_${RMRVERSION}_amd64.deb
+RUN rm -f rmr_${RMRVERSION}_amd64.deb rmr-dev_${RMRVERSION}_amd64.deb
+
+
+ARG XAPPFRAMEVERSION=v0.4.11
+#WORKDIR /go/src/gerrit.o-ran-sc.org/r/ric-plt
+# RUN git clone "https://gerrit.o-ran-sc.org/r/ric-plt/sdlgo"
+RUN git clone -b ${XAPPFRAMEVERSION} "https://gerrit.o-ran-sc.org/r/ric-plt/xapp-frame"
+RUN cd xapp-frame && \
+   GO111MODULE=on go mod vendor -v && \
+    cp -r vendor/* /go/src/ && \
+    rm -rf vendor
+
+
+
+#COPY bin/rmr* ./
+#RUN dpkg -i rmr_4.8.0_amd64.deb; dpkg -i rmr-dev_4.8.0_amd64.deb; rm rmr*
 RUN apt-get update && \
     apt-get -y install gcc
 COPY e2ap/ e2ap/
