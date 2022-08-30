@@ -1,5 +1,5 @@
-//module example.com/kpimon
-module kpimon
+module example.com/kpimon
+// module kpimon
 
 go 1.18
 
