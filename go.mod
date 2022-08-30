@@ -1,4 +1,4 @@
-#module example.com/kpimon
+//module example.com/kpimon
 module kpimon
 
 go 1.18
