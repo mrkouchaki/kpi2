@@ -39,6 +39,10 @@ ENV DEFAULTPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV PATH=$DEFAULTPATH:/usr/local/go/bin:/opt/go/bin:/root/go/bin
 COPY go.sum go.sum
 
+RUN go mod download
+
+COPY . .
+
 RUN go build ./kpimon.go
 
 COPY config-file.yaml .
