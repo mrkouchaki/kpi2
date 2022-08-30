@@ -5,7 +5,8 @@ FROM nexus3.o-ran-sc.org:10004/o-ran-sc/bldr-ubuntu20-c-go:1.0.0 as kpimonbuild
 WORKDIR /opt
 # Install RMR client
 
-
+ENV RMR_SEED_RT /opt/routes.txt
+COPY routes.txt /opt/routes.txt
 ARG RMRVERSION=4.0.2
 ARG RMRLIBURL=https://packagecloud.io/o-ran-sc/release/packages/debian/stretch/rmr_${RMRVERSION}_amd64.deb/download.deb
 ARG RMRDEVURL=https://packagecloud.io/o-ran-sc/release/packages/debian/stretch/rmr-dev_${RMRVERSION}_amd64.deb/download.deb
@@ -64,7 +65,10 @@ RUN go mod download
 
 COPY . .
 
-RUN go build ./kpimon.go
+RUN go env -w GO111MODULE=off
+RUN go build ./kpimon.go && pwd && ls -lat
+
+#RUN go build ./kpimon.go
 
 COPY config-file.yaml .
 ENV CFG_FILE=/opt/config-file.yaml
