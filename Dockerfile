@@ -68,7 +68,10 @@ RUN go mod download
 COPY . .
 
 RUN pwd
-RUN go env -w GO111MODULE=off && \ (pwd)
+RUN go env -w GO111MODULE=off
+
+RUN pwd
+
 RUN go build ./kpimon.go
 #&& pwd && ls -lat
 
