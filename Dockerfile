@@ -20,7 +20,7 @@ ARG XAPPFRAMEVERSION=v0.4.11
 RUN git clone -b ${XAPPFRAMEVERSION} "https://gerrit.o-ran-sc.org/r/ric-plt/xapp-frame"
 RUN cd xapp-frame && \
    GO111MODULE=on go mod vendor -v && \
-    cp -r vendor/* /go/src/ && \
+    cp -r vendor/* ./ && \
     rm -rf vendor
 
 
