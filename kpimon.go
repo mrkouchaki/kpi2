@@ -3,7 +3,7 @@ package main
 // import ("example.com/kpimon/control")
 
 import (
-	"./control"
+	"kpimon/control"
 )
 
 func main() {
