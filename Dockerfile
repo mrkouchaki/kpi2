@@ -15,6 +15,7 @@ RUN wget --content-disposition ${RMRDEVURL} && dpkg -i rmr-dev_${RMRVERSION}_amd
 RUN rm -f rmr_${RMRVERSION}_amd64.deb rmr-dev_${RMRVERSION}_amd64.deb
 
 
+WORKDIR /opt
 ARG XAPPFRAMEVERSION=v0.4.11
 #WORKDIR /go/src/gerrit.o-ran-sc.org/r/ric-plt
 # RUN git clone "https://gerrit.o-ran-sc.org/r/ric-plt/sdlgo"
@@ -61,10 +62,12 @@ ENV DEFAULTPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV PATH=$DEFAULTPATH:/usr/local/go/bin:/opt/go/bin:/root/go/bin
 COPY go.sum go.sum
 
+RUN pwd
 RUN go mod download
 
 COPY . .
 
+RUN pwd
 RUN go env -w GO111MODULE=off
 RUN go build ./kpimon.go
 #&& pwd && ls -lat
