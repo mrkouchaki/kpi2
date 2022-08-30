@@ -67,6 +67,8 @@ RUN go mod download
 
 COPY . .
 
+#WORKDIR /opt
+
 RUN pwd
 RUN go env -w GO111MODULE=off
 
