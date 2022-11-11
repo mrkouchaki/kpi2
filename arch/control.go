@@ -62,6 +62,7 @@ func (c Control) Consume(msg *xapp.RMRParams) error {
 
 func NewControl() Control {
 	str := os.Getenv("ranList")
+	xapp.Logger.Info("Message received os.Getenv: str=%s", str)
 	xapp.Logger.Info("In new control\n")
 	create_db()
 	fmt.Println("/////////in func NewControl Control create_db is done")
