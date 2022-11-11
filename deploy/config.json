@@ -11,6 +11,7 @@
       }
     }
   ],
+  "appenv": { "ranList":"enB_macro_001_001_0019b0" },
   "messaging": {
     "ports": [
       {
