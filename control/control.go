@@ -16,7 +16,7 @@ import (
 type Control struct {
 	RMR    chan *xapp.RMRParams //channel for receiving rmr message
 	client influxdb2.Client     //client for influxdb
-	ranList []string //nodeB list
+	//ranList []string //nodeB list
 }
 
 var (
@@ -46,7 +46,6 @@ func (c Control) Consume(msg *xapp.RMRParams) error {
 }
 
 func NewControl() Control {
-	str := os.Getenv("ranList")
 	xapp.Logger.Info("In new control\n")
 	create_db()
 	return Control{
