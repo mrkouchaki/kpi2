@@ -897,7 +897,7 @@ func (c Control) xAppStartCB(d interface{}) {
 
 	// Get eNodeB list
 	//nbList := c.getnbList()
-	nbList := os.getenv("ranlist")
+	nbList := os.Getenv("ranList")
 
 	// Send subscription request to connected NodeB
 	for _, nb := range nbList {
