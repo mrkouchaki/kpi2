@@ -69,7 +69,10 @@ func NewControl() Control {
 
 	return Control{
 		make(chan *xapp.RMRParams),
-		influxdb2.NewClient("http://ricplt-influxdb.ricplt:8086", "client"),
+		influxdb2.NewClient(
+			url :="http://ricplt-influxdb.ricplt:8086",
+			token := "client"
+		),
 	}
 }
 func create_db() {
