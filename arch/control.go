@@ -17,7 +17,7 @@ import (
 type Control struct {
 	RMR    chan *xapp.RMRParams //channel for receiving rmr message
 	client influxdb2.Client     //client for influxdb
-	ranList []string //nodeB list
+	//ranList []string //nodeB list
 }
 
 var (
@@ -61,7 +61,6 @@ func (c Control) Consume(msg *xapp.RMRParams) error {
 }
 
 func NewControl() Control {
-	str := os.Getenv("ranList")
 	xapp.Logger.Info("Message received os.Getenv: str=%s", str)
 	xapp.Logger.Info("In new control\n")
 	create_db()
@@ -69,10 +68,7 @@ func NewControl() Control {
 
 	return Control{
 		make(chan *xapp.RMRParams),
-		influxdb2.NewClient(
-			url :="http://ricplt-influxdb.ricplt:8086",
-			token := "client"
-		),
+		influxdb2.NewClient("http://ricplt-influxdb.ricplt:8086","client"),
 	}
 }
 func create_db() {
@@ -974,7 +970,8 @@ func (c Control) xAppStartCB(d interface{}) {
 	xapp.Logger.Info("In callback KPI monitor xApp ...")
 
 	// Get eNodeB list
-	nbList := c.getnbList()
+	//nbList := c.getnbList()
+	nbList := os.Getenv("ranList")
 	fmt.Println("////in xapp start func: nbList=", nbList)
 
 	// Send subscription request to connected NodeB
