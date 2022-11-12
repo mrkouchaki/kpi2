@@ -896,7 +896,8 @@ func (c Control) xAppStartCB(d interface{}) {
 	xapp.Logger.Info("In callback KPI monitor xApp ...")
 
 	// Get eNodeB list
-	nbList := c.getnbList()
+	//nbList := c.getnbList()
+	nbList := os.getenv("ranlist")
 
 	// Send subscription request to connected NodeB
 	for _, nb := range nbList {
