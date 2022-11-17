@@ -83,6 +83,7 @@ func create_db() {
 func (c Control) getEnbList() ([]*xapp.RNIBNbIdentity, error) {
 	enbs, err := xapp.Rnib.GetListEnbIds()
 	fmt.Println("/////////in func NewControl Control we pass the getEnbList func and starting to log error")
+	fmt.Println("///////// in getEnbListenbs err=", err)
 	if err != nil {
 		xapp.Logger.Error("err: %s", err)
 		return nil, err
@@ -92,6 +93,8 @@ func (c Control) getEnbList() ([]*xapp.RNIBNbIdentity, error) {
 	for index, enb := range enbs {
 		xapp.Logger.Info("%d. enbid: %s", index+1, enb.InventoryName)
 		fmt.Println("/////////enbs=", enbs)
+		fmt.Println("index plus 1 %d", index+1)
+		fmt.Println("enbid %s",enb.InventoryName)
 	}
 	return enbs, nil
 }
@@ -99,6 +102,7 @@ func (c Control) getEnbList() ([]*xapp.RNIBNbIdentity, error) {
 func (c *Control) getGnbList() ([]*xapp.RNIBNbIdentity, error) {
 	gnbs, err := xapp.Rnib.GetListGnbIds()
 	fmt.Println("///////// in getGnbListenbs gnbs=", gnbs)
+	fmt.Println("///////// in getGnbListenbs err=", err)
 
 	if err != nil {
 		xapp.Logger.Error("err: %s", err)
@@ -107,6 +111,8 @@ func (c *Control) getGnbList() ([]*xapp.RNIBNbIdentity, error) {
 	xapp.Logger.Info("List of connected gNBs :")
 	for index, gnb := range gnbs {
 		xapp.Logger.Info("%d. gnbid : %s", index+1, gnb.InventoryName)
+		fmt.Println("index plus 1 %d", index+1)
+		fmt.Println("gnbid %s",gnb.InventoryName)
 	}
 	return gnbs, nil
 }
@@ -969,8 +975,8 @@ func (c Control) xAppStartCB(d interface{}) {
 	xapp.Logger.Info("In callback KPI monitor xApp ...")
 
 	// Get eNodeB list
-	//nbList := c.getnbList()
-	nbList := os.Getenv("ranList")
+	nbList := c.getnbList()
+	//nbList := os.Getenv("ranList")
 	fmt.Println("////in xapp start func: nbList=", nbList)
 
 	// Send subscription request to connected NodeB
@@ -980,9 +986,9 @@ func (c Control) xAppStartCB(d interface{}) {
 			xapp.Logger.Info("Before send subscription request to %v", nb.InventoryName)
 			fmt.Println("////=Before send subscription request ", nb.InventoryName)
 			c.sendSubscription(nb.InventoryName)
-			fmt.Println("////sendSubscription=", nb.InventoryName)
+			fmt.Println("////sendSubscription nb.InventoryName %v=", nb.InventoryName)
 			xapp.Logger.Info("After send subscription request to %v", nb.InventoryName)
-			fmt.Println("////After send subscription request to %v=", nb.InventoryName)
+			fmt.Println("////After send subscription request to inventory %v=", nb.InventoryName)
 		}
 
 	}
