@@ -1000,8 +1000,21 @@ func (c Control) xAppStartCB(d interface{}) {
 
 func (c Control) Run() {
 	fmt.Println("/////////////in RUN func")
+	
+	file := "/opt/kpimon.log"
+	logFile, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0766)
+	if err != nil {
+		panic(err)
+	}
+	log.SetOutput(logFile)
+	log.SetPrefix("[qSkipTool]")
+	log.SetFlags(log.LstdFlags | log.Lshortfile | log.LUTC)
+	
 	// Setup level
-	xapp.Logger.SetLevel(xapp.Config.GetInt("logger.level"))
+	//xapp.Logger.SetLevel(xapp.Config.GetInt("logger.level"))
+	
+	xapp.Logger.SetLevel(4)
+	
 	// Register callback
 	xapp.SetReadyCB(c.xAppStartCB, true)
 	// Start xApp
