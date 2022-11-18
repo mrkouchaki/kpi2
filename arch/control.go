@@ -33,17 +33,17 @@ var (
 )
 
 
-func init() {
-	file := "/opt/kpimon.log"
-	logFile, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0766)
-	if err != nil {
-		panic(err)
-	}
-	log.SetOutput(logFile)
-	log.SetPrefix("[qSkipTool]")
-	log.SetFlags(log.LstdFlags | log.Lshortfile | log.LUTC)
-	xapp.Logger.SetLevel(4)
-}
+//func init() {
+//	file := "/opt/kpimon.log"
+//	logFile, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0766)
+//	if err != nil {
+//		panic(err)
+//	}
+//	log.SetOutput(logFile)
+//	log.SetPrefix("[qSkipTool]")
+//	log.SetFlags(log.LstdFlags | log.Lshortfile | log.LUTC)
+//	xapp.Logger.SetLevel(4)
+//}
 
 func (c Control) Consume(msg *xapp.RMRParams) error {
 	id := xapp.Rmr.GetRicMessageName(msg.Mtype)
