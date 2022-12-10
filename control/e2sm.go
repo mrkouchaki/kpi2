@@ -764,9 +764,15 @@ func (c *E2sm) ParseNRCGI(nRCGI NRCGIType) (CellID string, err error) {
 	var nrCellID BitString
 
 	plmnID = nRCGI.PlmnID
+	fmt.Println("plmnID = nRCGI.PlmnID in e2sm parsenrcgi func: %d", plmnID)
 	CellID, _ = c.ParsePLMNIdentity(plmnID.Buf, plmnID.Size)
+	fmt.Println("CellID in e2sm parsenrcgi func: %d", CellID)
 
 	nrCellID = nRCGI.NRCellID
+	fmt.Println("nrCellID = nRCGI.NRCellID in e2sm parsenrcgi func:", nrCellID)
+	
+	fmt.Println("plmnID.Size= %d", plmnID.Size)
+	fmt.Println("nrCellID.Size= %d", nrCellID.Size)
 
 	if plmnID.Size != 3 || nrCellID.Size != 5 {
 		return "", errors.New("Invalid input: illegal length of NRCGI")
@@ -786,6 +792,8 @@ func (c *E2sm) ParseNRCGI(nRCGI NRCGIType) (CellID string, err error) {
 	latter[5] = nrCellID.Buf[4] >> uint(nrCellID.BitsUnused)
 
 	CellID = CellID + strconv.Itoa(int(former[0])) + strconv.Itoa(int(former[1])) + strconv.Itoa(int(former[2])) + strconv.Itoa(int(latter[0])) + strconv.Itoa(int(latter[1])) + strconv.Itoa(int(latter[2])) + strconv.Itoa(int(latter[3])) + strconv.Itoa(int(latter[4])) + strconv.Itoa(int(latter[5]))
+	
+	fmt.Println("CellID at the end of parsenrcgi func in e2sm: %d", CellID)
 
 	return
 }
